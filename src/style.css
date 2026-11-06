@@ -1,5 +1,20 @@
 /* Neon Warden: the HUD panels tilt toward the screen like an arcade cabinet. */
 
+:root {
+  --mainColor: #5ef2ff;
+  --secondaryColor: #ffe066;
+  --bossColor: #ff4d6d;
+
+  --textColor: #e8fdff;
+  --headerTextColor: #6f86a8;
+  --headerFont: Orbitron, "Trebuchet MS", sans-serif;
+
+  --borderColor: rgba(94, 242, 255, 0.35);
+  --secondaryBorderColor: rgba(94, 242, 255, 0.2);
+  --mutedBorderColor: rgba(94, 242, 255, 0.15);
+  --mutedSecondaryBorderColor: rgba(94, 242, 255, 0.08);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -11,7 +26,7 @@ body {
   place-content: center;
   gap: 14px;
   background: radial-gradient(ellipse at 50% 30%, #1a0f3a, #04020c 70%);
-  color: #e8fdff;
+  color: var(--textColor);
   font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
 }
 
@@ -28,11 +43,11 @@ body {
   display: grid;
   gap: 14px;
   padding: 14px;
-  border: 1px solid rgba(94, 242, 255, 0.35);
+  border: 1px solid var(--borderColor);
   border-radius: 10px;
   background: rgba(14, 10, 34, 0.86);
-  box-shadow: 0 0 24px rgba(94, 242, 255, 0.15), inset 0 0 18px rgba(94, 242,
-    255, 0.08);
+  box-shadow: 0 0 24px var(--mutedBorderColor), inset 0 0 18px
+    var(--mutedSecondaryBorderColor);
   transition: opacity 400ms, transform 400ms;
 }
 
@@ -55,21 +70,21 @@ body {
 
 h2 {
   margin: 0 0 4px;
-  font: 600 11px/1 Orbitron, "Trebuchet MS", sans-serif;
+  font: 600 11px/1 var(--headerFont);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #6f86a8;
+  color: var(--headerTextColor);
 }
 
 output {
   font-size: 22px;
-  color: #5ef2ff;
+  color: var(--mainColor);
   text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
 #best {
   font-size: 15px;
-  color: #ffe066;
+  color: var(--secondaryColor);
 }
 
 .pips,
@@ -91,7 +106,7 @@ output {
 }
 
 .cell {
-  color: #ffe066;
+  color: var(--secondaryColor);
 }
 
 .pip.lit,
@@ -108,11 +123,11 @@ output {
   display: none;
   margin: 0;
   padding: 4px 8px;
-  border: 1px solid #ffe066;
+  border: 1px solid var(--secondaryColor);
   border-radius: 10px;
-  color: #ffe066;
+  color: var(--secondaryColor);
   text-align: center;
-  font: 600 11px/1.4 Orbitron, "Trebuchet MS", sans-serif;
+  font: 600 11px/1.4 var(--headerFont);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   animation: blink 1.2s steps(2) infinite;
@@ -128,8 +143,8 @@ output {
   height: 640px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 0 2px rgba(94, 242, 255, 0.35), 0 0 40px rgba(94, 242, 255,
-    0.2);
+  box-shadow: 0 0 0 2px var(--borderColor), 0 0 40px
+    var(--secondaryBorderColor);
 }
 
 #game,
@@ -152,11 +167,11 @@ output {
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  color: #6f86a8;
+  color: var(--headerTextColor);
 }
 
 .stop[data-state="cleared"] {
-  color: #5ef2ff;
+  color: var(--mainColor);
 }
 
 .stop[data-state="cleared"] .stop-dot {
@@ -164,7 +179,7 @@ output {
 }
 
 .stop[data-state="current"] {
-  color: #ffe066;
+  color: var(--secondaryColor);
   text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
@@ -221,9 +236,9 @@ output {
 }
 
 .banner strong {
-  font: 700 26px/1.1 Orbitron, "Trebuchet MS", sans-serif;
+  font: 700 26px/1.1 var(--headerFont);
   letter-spacing: 0.12em;
-  color: #ffe066;
+  color: var(--secondaryColor);
   text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
@@ -231,7 +246,7 @@ output {
   font-size: 13px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #e8fdff;
+  color: var(--textColor);
 }
 
 .caption {
@@ -239,7 +254,7 @@ output {
   inset: auto 8% 6%;
   margin: 0;
   padding: 10px 14px;
-  border-left: 3px solid #5ef2ff;
+  border-left: 3px solid var(--mainColor);
   background: rgba(4, 2, 12, 0.75);
   font-size: 14px;
   line-height: 1.5;
@@ -257,7 +272,7 @@ output {
   margin: 0;
   text-align: center;
   font-size: 12px;
-  color: #6f86a8;
+  color: var(--headerTextColor);
 }
 
 /* Impacts shake the whole cabinet; the panels keep their tilt while shaking. */
