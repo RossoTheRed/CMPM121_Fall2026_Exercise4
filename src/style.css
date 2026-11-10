@@ -1,9 +1,10 @@
 /* Neon Warden: the HUD panels tilt toward the screen like an arcade cabinet. */
 
 :root {
-  --mainColor: #5ef2ff;
-  --secondaryColor: #ffe066;
-  --bossColor: #ff4d6d;
+  --safetyBlue: #5ef2ff;
+  --infoYellow: #ffe066;
+  --dangerPink: #ff5ea8;
+  --bossRed: #ff4d6d;
 
   --textColor: #e8fdff;
   --headerTextColor: #6f86a8;
@@ -78,13 +79,13 @@ h2 {
 
 output {
   font-size: 22px;
-  color: var(--mainColor);
+  color: var(--safetyBlue);
   text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
 #best {
   font-size: 15px;
-  color: var(--secondaryColor);
+  color: var(--infoYellow);
 }
 
 .pips,
@@ -102,30 +103,41 @@ output {
 }
 
 .pip {
-  color: #ff5ea8;
+  color: var(--dangerPink);
+  width: 22px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: currentColor;
 }
 
 .cell {
-  color: var(--secondaryColor);
+  color: var(--infoYellow);
+  flex: 1;
+  border-radius: 2px;
 }
 
-.pip.lit,
-.cell.lit {
+.pip.lit {
   opacity: 1;
   box-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
 .cell.lit {
   background: currentColor;
+  opacity: 1;
+  box-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
+}
+
+.power {
+  display: grid;
+  grid-template-columns: repeat(3, 1/3fr);
 }
 
 .badge {
   display: none;
   margin: 0;
   padding: 4px 8px;
-  border: 1px solid var(--secondaryColor);
+  border: 1px solid var(--infoYellow);
   border-radius: 10px;
-  color: var(--secondaryColor);
+  color: var(--infoYellow);
   text-align: center;
   font: 600 11px/1.4 var(--headerFont);
   letter-spacing: 0.2em;
@@ -171,7 +183,7 @@ output {
 }
 
 .stop[data-state="cleared"] {
-  color: var(--mainColor);
+  color: var(--safetyBlue);
 }
 
 .stop[data-state="cleared"] .stop-dot {
@@ -179,7 +191,7 @@ output {
 }
 
 .stop[data-state="current"] {
-  color: var(--secondaryColor);
+  color: var(--infoYellow);
   text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
@@ -188,11 +200,18 @@ output {
 }
 
 .stop:last-child {
-  color: #ff4d6d;
+  color: var(--bossRed);
+}
+
+.stop-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
 }
 
 .boss {
-  color: #ff4d6d;
+  color: var(--bossRed);
 }
 
 .boss h2 {
@@ -238,7 +257,7 @@ output {
 .banner strong {
   font: 700 26px/1.1 var(--headerFont);
   letter-spacing: 0.12em;
-  color: var(--secondaryColor);
+  color: var(--infoYellow);
   text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
 }
 
@@ -254,7 +273,7 @@ output {
   inset: auto 8% 6%;
   margin: 0;
   padding: 10px 14px;
-  border-left: 3px solid var(--mainColor);
+  border-left: 3px solid var(--safetyBlue);
   background: rgba(4, 2, 12, 0.75);
   font-size: 14px;
   line-height: 1.5;

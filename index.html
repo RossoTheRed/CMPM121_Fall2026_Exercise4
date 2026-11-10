@@ -6,6 +6,67 @@
     <title>Neon Warden</title>
   </head>
   <body>
+    <span id="cabinet" class="cabinet" data-mode="title">
+      <aside id="panel-left" class="panel panel-left" aria-label="Ship status">
+        <section id="scoreBox" class="readout">
+          <h2 id="scoreLabel">Score</h2>
+          <output id="score">0000000</output>
+        </section>
+
+        <section id="bestBox" class="readout">
+          <h2 id="bestLabl">Best</h2>
+          <output id="best">0000000</output>
+        </section>
+
+        <section id="hullBox" class="readout">
+          <h2 id="hullLabel">Hull</h2>
+          <div id="lives" class="pips">
+            <!-- Health pips go here! -->
+          </div>
+        </section>
+
+        <section id="cannonBox" class="readout">
+          <h2 id="cannonLabel">Cannon</h2>
+          <div id="power" class="cells">
+            <!-- Cannon cells go here! -->
+          </div>
+        </section>
+
+        <p id="badge" class="badge">Self-play</p>
+      </aside>
+
+      <div id="screen" class="screen">
+        <div id="game">
+          <div id="banner" class="banner">
+            <strong></strong>
+            <span></span>
+          </div>
+          <p id="caption" class="caption"></p>
+        </div>
+      </div>
+
+      <aside id="panel-right" class="panel panel-right" aria-label="Route">
+        <h2 id="routeLabel">Route</h2>
+        <ol id="route" class="route"></ol>
+        <section id="boss" class="boss" hidden="true">
+          <h2 id="bossLabel">Warden</h2>
+          <div id="meter" class="boss-meter">
+            <span id="boss-fill"></span>
+          </div>
+        </section>
+      </aside>
+    </span>
+
+    <p id="help" class="help">
+      Arrows or WASD to fly · Space or Z to fire · Wait at the title for self-play
+    </p>
+
+    <template id="stop-template">
+      <li id="stop" class="stop" data-state="ahead">
+        <span id="dot" class="stop-dot"></span>
+        <span id="label" class="stop-name"></span>
+      </li>
+    </template>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
